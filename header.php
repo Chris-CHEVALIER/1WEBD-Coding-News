@@ -12,10 +12,17 @@
     <?php
     function loadClass(string $class): void
     {
-        require "./Entity/$class.php";
+        
+        if (str_contains($class, "Controller")) {
+            require "./Controller/$class.php";
+        } else {
+            require "./Entity/$class.php";
+        }
     }
 
     spl_autoload_register("loadClass");
+
+    $articleController = new ArticleController();
     ?>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">

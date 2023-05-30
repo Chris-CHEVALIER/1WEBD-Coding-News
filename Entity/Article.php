@@ -8,16 +8,20 @@ class Article
     private string $content;
     private string $author;
     private string $image;
-    private array $comments;
 
-    public function __construct(int $id, string $title, string $content, string $author, string $image, array $comments)
+    public function __construct(array $data)
     {
-        $this->setId($id);
-        $this->setTitle($title);
-        $this->setContent($content);
-        $this->setAuthor($author);
-        $this->setImage($image);
-        $this->setComments($comments);
+        $this->hydrate($data);
+    }
+
+    public function hydrate(array $data): void
+    {
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
     // Méthodes
@@ -62,17 +66,6 @@ class Article
     public function setAuthor($author)
     {
         $this->author = $author;
-        return $this;
-    }
-
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
         return $this;
     }
 

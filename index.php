@@ -15,6 +15,7 @@
                 <a href="javascript:;" onclick="deployArticle(<?= htmlspecialchars(json_encode($article->getContent()), ENT_QUOTES); ?>, <?= $i ?>)" class="link-primary">Voir plus</a> <br>
                 <a href="./articleForm.php?id=<?= $article->getId() ?>" class="btn btn-warning">Modifier</a>
                 <a href="javascript:;" onclick="confirmRemove(<?= $article->getId() ?>)" class="btn btn-danger">Supprimer</a>
+                <a href="read.php?id=<?= $article->getId() ?>" class="btn btn-primary">Lire</a>
             </div>
         </div>
     <?php

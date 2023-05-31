@@ -8,6 +8,7 @@ class Article
     private string $content;
     private string $author;
     private string $image;
+    private string $favicon;
 
     public function __construct(array $data)
     {
@@ -77,6 +78,26 @@ class Article
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of favicon
+     */
+    public function getFavicon()
+    {
+        return $this->favicon;
+    }
+
+    /**
+     * Set the value of favicon
+     *
+     * @return  self
+     */
+    public function setFavicon($favicon)
+    {
+        $this->favicon = $favicon;
 
         return $this;
     }

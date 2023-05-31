@@ -29,7 +29,7 @@ class ArticleController
     {
         $req = $this->db->prepare("INSERT INTO `article` (title, content, author, image) VALUES (:title, :content, :author, :image)");
 
-        $req->bindValue(":title", $newArticle->getTitle(), PDO::PARAM_STR);
+        $req->bindValue(":title", htmlspecialchars($newArticle->getTitle()), PDO::PARAM_STR);
         $req->bindValue(":content", $newArticle->getContent(), PDO::PARAM_STR);
         $req->bindValue(":author", $newArticle->getAuthor(), PDO::PARAM_STR);
         $req->bindValue(":image", $newArticle->getImage(), PDO::PARAM_STR);

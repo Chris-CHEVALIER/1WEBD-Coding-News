@@ -10,11 +10,13 @@ class Article
     private string $image;
     private string $favicon;
 
+    // Méthodes
     public function __construct(array $data)
     {
         $this->hydrate($data);
     }
 
+    // Méthode d'hydration générique
     public function hydrate(array $data): void
     {
         foreach ($data as $key => $value) {
@@ -25,7 +27,6 @@ class Article
         }
     }
 
-    // Méthodes
     public function getId(): int
     {
         return $this->id;

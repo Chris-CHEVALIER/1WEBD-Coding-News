@@ -11,22 +11,20 @@
 
 <body>
     <?php
-    function loadClass(string $class): void
-    {
-
+    // Fonction PHP d'auto-chargement de classes pour éviter les require() multiples
+    spl_autoload_register(function (string $class): void {
         if (str_contains($class, "Controller")) {
             require "./Controller/$class.php";
         } else {
             require "./Entity/$class.php";
         }
-    }
+    });
 
-    spl_autoload_register("loadClass");
-
+    // Instanciation de la classe ArticleController pour y avoir dans tous les autres fichiers
     $articleController = new ArticleController();
     ?>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="./index.php">Coding News</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
